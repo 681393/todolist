@@ -8,7 +8,7 @@ export const getTodoList = () => async (dispatch, getState) => {
   const { security } = getState();
   if (security.user && security.validToken) {
     try {
-      const response = await axios.get(`/todoList/${security.user.sub}`);
+      const response = await axios.get(`/api/todoList/${security.user.sub}`);
       dispatch({
         type: GET_TODO_LIST,
         payload: response.data,
@@ -25,7 +25,7 @@ export const saveTask = (task) => async (dispatch, getState) => {
   const { security } = getState();
   if (security.user && security.validToken) {
     try {
-      const response = await axios.post(`/todoList/${security.user.sub}`, task);
+      const response = await axios.post(`/api/todoList/${security.user.sub}`, task);
       dispatch({
         type: SAVE_TASK,
         payload: response.data,
@@ -40,7 +40,7 @@ export const saveTask = (task) => async (dispatch, getState) => {
 
 export const deleteTask = (taskId) => async (dispatch) => {
   try {
-    await axios.delete(`/todoList/${taskId}`);
+    await axios.delete(`/api/todoList/${taskId}`);
     dispatch({
       type: DELETE_TASK,
       payload: taskId,

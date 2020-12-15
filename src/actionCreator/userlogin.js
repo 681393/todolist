@@ -6,7 +6,7 @@ import { SET_CURRENT_USER, LOGIN_ERROR } from "../api/types";
 
 export const userlogin = (userLoginData) => async (dispatch) => {
   try {
-    const res = await axios.post("/login", userLoginData);
+    const res = await axios.post("/api/login", userLoginData);
 
     const { jwt } = res.data;
 
